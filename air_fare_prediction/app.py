@@ -30,7 +30,7 @@ arr_time = ""
 @app.route("/")
 @cross_origin()
 def home():
-    return render_template("home.html",
+    return render_template("index.html",
         sources = sources, source = source,
         destinations = destinations, destination = destination,
         nstops = nstops, nstop = nstop,
@@ -94,13 +94,12 @@ def predict():
         d_Cochin, d_Delhi, d_New_Delhi, d_Hyderabad, d_Kolkata = dest_list
 
         if arr_time <= dep_time:
-            return render_template("home.html", prediction_text="Departure time must be before the arrival time!",
+            return render_template("index.html", prediction_text="Departure time must be before the arrival time!",
                 sources = sources, source = source,
                 destinations = destinations, destination = destination,
                 nstops = nstops, nstop = nstop,
                 airlines = airlines, airline = airline,
                 dep_time = dep_time, arr_time = arr_time)
-
 
         
         prediction = model.predict([[
@@ -113,31 +112,26 @@ def predict():
             arr_hour,
             arr_min,
             duration_hours,
-            Air_India,
-            GoAir,
-            IndiGo,
             Jet_Airways,
             Jet_Airways_Business,
             Multiple_carriers,
-            Multiple_carriers_Premium_economy,
-            SpiceJet,
-            Trujet,
+            IndiGo,
+            Air_India,
             Vistara,
-            Vistara_Premium_economy,
-            s_Chennai,
-            s_Delhi,
-            s_Kolkata,
-            s_Mumbai,
-            d_Cochin,
+            SpiceJet,
+            GoAir,
+            d_New_Delhi,
             d_Delhi,
+            d_Cochin,
             d_Hyderabad,
-            d_Kolkata,
-            d_New_Delhi
+            s_Delhi,
+            s_Mumbai,
+            s_Kolkata
         ]])
 
         output = round(prediction[0],2)
 
-        return render_template('home.html', prediction_text="$ {}".format(output),
+        return render_template('index.html', prediction_text="$ {}".format(output),
             sources = sources, source = source,
             destinations = destinations, destination = destination,
             nstops = nstops, nstop = nstop,
@@ -145,7 +139,7 @@ def predict():
             dep_time = dep_time, arr_time = arr_time)
 
 
-    return render_template("home.html")
+    return render_template("index.html")
 
 
 
