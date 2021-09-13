@@ -1,7 +1,7 @@
 # ML_end2end_projects
 
 
-## Air Fare Prediction
+## 1. Air Fare Prediction
 Predict Air Fare with Random Forest Regression.
 
 1. Data: Training and Test datasets are located in directory /data
