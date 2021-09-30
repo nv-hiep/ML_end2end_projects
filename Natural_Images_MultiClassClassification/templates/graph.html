@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask: Chart</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
+</head>
+<body>
+    <!-- <canvas id="Chart" width="900" height="400"></canvas> -->
+    <script>
+        var ctx = document.getElementById("Chart").getContext("2d");
+        var myChart = new Chart(ctx, {
+            type: "line", // scatter
+            data: {
+                labels: {{labels | safe}},
+                datasets: [
+                    {
+                        label: "Data points",
+                        data: {{ values | safe}},
+                        fill: false,
+                        pointStyle: "star",
+                        borderColor: "rgb(75, 192, 192)",
+                        lineTension: 0.1
+                    }
+                ]
+            },
+            options: {
+                responsive: false
+            }
+        });
+    </script>
+</body>
+</html>

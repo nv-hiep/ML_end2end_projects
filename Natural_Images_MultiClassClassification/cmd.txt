@@ -1,0 +1,8 @@
+ kill -9 $(lsof -t -i :5000)
+ <image src="{{url_for('static',filename = 'images/download.jpg')}}" >
+
+ # cd ../flask/
+ # source venv/bin/activate
+ $ cd <path/to/project>
+ $ flask run
+ or $ python3 app
