@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<title>{{TITLE}}</title>
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,600" rel="stylesheet">
+
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="static/css/bootstrap.min.css" />
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="static/css/style.css" />
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
+
+</head>
+
+<body>
+	<div id="booking" class="section">
+		
+		{% with messages = get_flashed_messages(with_categories=true) %}
+		{% if messages %}
+			{% for category, message in messages %}
+			<div class="alert alert-{{ category }} alert-dismissible fade in" role="alert">
+				<a href="/" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<strong>{{ message }}</strong>
+			</div>
+			{% endfor %}
+		{% endif %}
+		{% endwith %}
+
+
+		<div class="section-center">
+			<div class="container">
+
+				<div class="row justify-content-center">
+			    	<h2><a href="\">{{FRAME_TITLE}}</a></h2>
+					<h4>{{PURPOSE_TITLE}}</h4>
+					<h4><a href="{{GITHUB_LINK}}" target="_blank">Github source code</a></h4>
+			  	</div>
+
+
+				<div class="row">
+
+					{% for fname in results %}
+					<div class="col-md-4">
+						<div class="thumbnail">
+							<img src="/static/img/{{ fname }}" alt="Lights" class="img-thumbnail" style="width:100%">
+						</div>
+
+    					<label class="form-label" for="form4Example3">Text</label>
+						<textarea class="form-control" id="form4Example3" rows="4">{{results[fname]}}</textarea>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>
